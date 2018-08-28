@@ -1,0 +1,43 @@
+.info_data {
+    background: url('../../assets/images/electronicsinformation_1250x450px.jpg') !important; 
+   height: 94vh !important;
+   background-size: contain !important;
+   color: white;
+}
+.info_data h4.text-center[_ngcontent-c2] {
+   font-size: 36px;
+   font-family: abel;
+   position: absolute;
+   left: 32%;
+   top: 26%;
+   background: rgba(31, 41, 49, 0.631);
+   padding: 10px;
+   border: 1px solid;
+}
+
+
+.information_tech {
+   margin-bottom: 34px;
+   width: 100%;
+   margin-top: -9px;
+}
+h4.it_support {
+   font-family: abel;
+   color: white;
+}
+
+
+.sidebar li.list-group-item[_ngcontent-c8] {
+    background: linear-gradient(#3e4037, #008eff 88%) !important;
+    box-shadow: -15px 8px 20px 2px rgba(34, 61, 90, 0.7215686274509804) !important;
+    border-radius: 18px;
+    color: white;
+    cursor: pointer;
+    margin: 9px !important;
+}
+
+
+a.btn.btn-default {
+    border: 1px solid;
+    color: #ffffffd6 !important;
+}

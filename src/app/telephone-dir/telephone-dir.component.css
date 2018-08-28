@@ -1,0 +1,36 @@
+a.btn.btn-default {
+    color: #6e6f6f !important;
+}
+
+.searchoptions a.btn.btn-default {
+    color: unset;
+}
+
+.jumbotron[_ngcontent-c2] {
+    background: #66bdd2 !important;
+    color: white !important;
+}
+
+.searchoptions[_ngcontent-c2] a.btn.btn-default[_ngcontent-c2] {
+    color: white !important;
+}
+
+a.btn.btn-default[_ngcontent-c2] {
+    color: #f4ffff !important;
+}
+
+.telephone_data_page table.table-hover.table-stripped.table-bordered.col-md-9 {
+    margin-left: 29px;
+    background: #23465421;
+}
+
+h4.text-center.phoneDirectory {
+    position: absolute;
+    top: 0px;
+    font-size: 26px;
+    left: 12px;
+    background: none;
+}
+.telephone_data_page.col-md-12 {
+    margin-top: -8px;
+}

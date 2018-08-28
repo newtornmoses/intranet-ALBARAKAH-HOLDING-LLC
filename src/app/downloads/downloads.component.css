@@ -1,0 +1,61 @@
+
+
+h4.text-center[_ngcontent-c2] {
+    font-size: 36px;
+    font-family: abel;
+    position: relative;
+    left: -4%;
+    top: 26%;
+    background: rgba(31, 41, 49, 0.6313725490196078);
+    padding: 10px;
+}
+
+
+
+.row {
+    background: linear-gradient(#ebeff1 66%, rgba(8, 8, 8, 0.55)106%);
+}
+
+
+
+.row.downloadSection {
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.row.downloadSection:hover {
+    background: lightsteelblue;
+}
+
+
+
+h4.text-center.phoneDirectory {
+    position: absolute;
+    top: 0px;
+    font-size: 26px;
+    left: 520px;
+    background: none;
+}
+
+
+
+
+
+
+        
+
+        .col-md-12.info_download[_ngcontent-c2] {
+            margin-top: 5%;
+            z-index: 1;
+        }
+
+        h4.text-center.download_text {
+            margin-left: 19% !important;
+            color: white;
+            margin-top: 17px !important;
+            position: initial !important;
+            width: 835px !important;
+        }
+   
+    

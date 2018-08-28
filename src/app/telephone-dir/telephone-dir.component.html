@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="../../assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+
+        <app-navbar></app-navbar>
+
+
+<div class="telephone_data_page col-md-12">
+    <div class="container">
+        <div class="jumbotron">
+            <h4 class="text-center phoneDirectory col-md-12">Advanced Phone Directory Search</h4>
+            <hr>
+            <div class="searchoptions col-md-4">
+                <a class="btn btn-default" (click)="searchby(false, true)" appActiveButton>Search by extension <i class="fa fa-phone"></i></a>
+                <a class="btn btn-default" (click)="searchby(true, false)" appActiveButton>Search by user <i class="fa fa-user"></i></a>
+            </div>
+
+            <div class="searchform col-md-8">
+                <form *ngIf="extension">
+                    <input type="number" name="search" placeholder="search by extension number" [(ngModel)]="search" class="form-control " (keyup)="getSearch($event)">
+                    <br>
+                    <p class="text-center" style="font-size: 14px">Need to search by user name ? , please click the user button on the left</p>
+
+                    <div class="searchbtn col-md-6 col-md-offset-3">
+                        <button class=" btn btn-info btn-block" (click)="getSearch()">Search</button>
+                    </div>
+                </form>
+
+                <form *ngIf="user">
+                    <input type="text" name="search" placeholder="search by extension user" [(ngModel)]="search" class="form-control " (keyup)="get_userSearch($event)">
+                    <br>
+                    <p class="text-center" style="font-size: 14px">Need to search by extiension ? , please click the extension button on the left</p>
+                    <div class="searchbtn col-md-6 col-md-offset-3">
+                        <button class=" btn btn-info btn-block" (click)="getSearch()">Search</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+   <hr>
+    <div class="row">
+        <div class="location_tabs col-md-2">
+            <h5 style="color:white; font-size:14px;">Navigation</h5>
+            <h5 class="text-center">TOTAL: {{telephone_Array.length}}</h5>
+            <div class="tabsArray">
+                <a class="btn btn-default" (click)="getAll_data()" appActiveButton>ALL DATA</a>
+
+
+
+                <a class="btn btn-default" (click)="getDepartment('workers village')" appActiveButton>WORKERS VILLAGE</a>
+
+
+                <a class="btn btn-default" (click)="getDepartment('iccc')" appActiveButton>ICCC</a>
+
+
+
+                <a class="btn btn-default" (click)="getDepartment('skill force')" appActiveButton>SKILL FORCE</a>
+
+
+
+                <a class="btn btn-default" (click)="getDepartment('Tasheel')" appActiveButton>TASHEEL</a>
+
+
+                <a class="btn btn-default" (click)="getDepartment('dic')" appActiveButton>D. I. C DUBAI</a>
+
+                <a class="btn btn-default" (click)="getDepartment('raha')" appActiveButton>RAHA VILLAGE</a>
+
+                <a class="btn btn-default" (click)="getDepartment('sav')" appActiveButton>SADIYAAT VILLAGE</a>
+            </div>
+
+
+            <div class="footer">
+                <p>Property of Albarakah Holding </p>
+                <p> IT DEPARTMENT &copy; 2018</p>
+                <p>Developed & designed by Newtorn Moses</p>
+            </div>
+        </div>
+        <!-- table -->
+        <table class="table-hover table-stripped table-bordered col-md-9" width="100%">
+
+            <tr>
+                <th>Department <i class="fa fa-building"></i></th>
+                <th>Extension User <i class="fa fa-user"></i> </th>
+                <th>Extension No_ <i class="fa fa-phone"></i></th>
+                <th *ngIf="isSearching">Location <i class="fa fa-globe"></i></th>
+
+
+            </tr>
+
+            <tr *ngFor="let item of telephone_Array" appLocationDetails (mouseover)="show_details(item.location)">
+                <td>{{item.department}}</td>
+                <td>{{item.extension_user}}</td>
+                <td>{{item.extension}}</td>
+                <td *ngIf="isSearching">{{item.location}}</td>
+
+
+
+            </tr>
+
+
+
+        </table>
+    </div>
+</div>
+
+
+
+

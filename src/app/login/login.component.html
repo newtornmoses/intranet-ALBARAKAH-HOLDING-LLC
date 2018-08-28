@@ -1,0 +1,150 @@
+
+<app-navbar  [loggedinStatus] ="userAuth"  (logoutStatus)="logged_out($event)"></app-navbar>
+<div class="container">
+    <flash-messages></flash-messages> 
+    <!-- login -->
+    <div class="row loginForm" *ngIf="login">
+        <div class="login_icon col-md-6">
+            <img src="../../assets/images/if_Login Manager_7261.png" alt="">
+        </div>
+        <div class="col-md-6 col-md-offset-4">
+            <h4 class="login_label text-center">
+                MEMBER LOGIN
+            </h4>
+            <form action="" (submit)="getFormData($event)">
+
+
+                <div class="form-group">
+                    <label for="name"> Badge ID:&nbsp; </label>
+                    <input type="text" name="id" class="form-control" [(ngModel)]="credentials.id" placeholder="e.g HR1111">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">password:&nbsp; <i class="fa fa-lock"></i></label>
+                    <input type="password" name="password" class="form-control" [(ngModel)]="credentials.password" placeholder="Your password here">
+                </div>
+
+
+
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+
+                <p class="signup_login">
+                    Not registered?.. signup here..
+                    <button (click)="showSignup(true, false)" class="login_sign" style="cursor: pointer">Sign Up</button>
+                </p>
+            </form>
+        </div>
+
+
+
+        <!-- show alert -->
+        <div class="alert-container" *ngIf="showAlert">
+            <div class="alert col-md-12">
+                <div class="alert_details">
+                    <h4>Caution : <i class="fa fa-exclamation-triangle"></i></h4>
+                    <p class="alert_details">{{msg}}</p> 
+                    <button class="btn btn-primary btn-block pull-right" (click)="removeWarning()">OK</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- signup -->
+<div class="container">
+    <div class="row loginForm" *ngIf="signup">
+        <div class="login_icon col-md-6">
+            <img class="signup_img" src="../../assets/images/if_Login_73221.png" alt="">
+        </div>
+        <div class="col-md-6 col-md-offset-4">
+            <h4 class="login_label text-center">
+                USER SIGNUP
+            </h4>
+            <form action="" (submit)="getSignupFormData($event)">
+
+
+                <div class="form-group">
+                    <label for="name"> UserName:&nbsp; </label>
+                    <input type="text" name="username" class="form-control" [(ngModel)]="credentials.username" placeholder="Your user Name here">
+                </div>
+
+                <div class="form-group">
+                    <label for="name"> LoginName:&nbsp; </label>
+                    <input type="text" name="LoginName" class="form-control" [(ngModel)]="credentials.LoginName" placeholder="Your login Name here">
+                </div>
+
+                <div class="form-group">
+                    <label for="name"> Badge ID:&nbsp; </label>
+                    <input type="text" name="id" class="form-control" [(ngModel)]="credentials.id" placeholder="e.g HR1111">
+                </div>
+
+                <div class="form-group">
+                    <label for="name"> password:&nbsp; </label>
+                    <input type="password" name="password" class="form-control" [(ngModel)]="credentials.password" placeholder="Your password here">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="name"> Email:&nbsp; <i class="fa fa-id-envelope"></i></label>
+                    <input type="email" name="email" class="form-control" [(ngModel)]="credentials.email" placeholder="e.g email@albarakah.ae">
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label for="name"> Department:&nbsp; &nbsp; &nbsp; </label>
+                    <mat-form-field>
+                        <mat-select name="DepartmentCode" [(ngModel)]="credentials.DepartmentCode" placeholder="--Select department--">
+                            <mat-option [value]="dept.DepartmentCode" *ngFor="let dept of depatmentData"> {{dept.DepartmentName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                    <label for="name"> Computer Name:&nbsp; </label>
+                    <input type="text" name="PCName" class="form-control" [(ngModel)]="credentials.PCName" placeholder="Your computer Name ">
+                </div>
+
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Signup</button>
+                </div>
+            </form>
+        </div>
+
+        <p class="login_option" class="col-md-6">
+            Already a registered member?.. Login here..
+            <button (click)="showSignup(false, true)" class="login_sign" style="cursor: pointer">Login</button>
+        </p>
+
+    </div>
+</div>
+
+ <!-- show alert -->
+ <div class="alert-container" *ngIf="showAlert">
+    <div class="alert col-md-12">
+        <div class="alert_details">
+            <h4>Caution : <i class="fa fa-exclamation-triangle"></i></h4>
+            <p class="alert_details">{{msg}}</p> 
+            <button class="btn btn-primary btn-block pull-right" (click)="removeWarning()">OK</button>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="welcome_msg" *ngIf="userAuth">
+    <h4 class="welcome_txt">Hi {{user}} , Welcome to Intranet</h4>
+    <p class="welcome_info text-center">Take a tour of the intranet and find help with this amazing tool</p>
+</div>

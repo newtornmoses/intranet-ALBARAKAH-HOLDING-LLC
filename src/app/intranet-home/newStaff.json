@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Hamza Bilal",
+        "Department": "IT Department",
+        "date": "12/08/2014",
+        "image": "HR1052.jpg"
+
+    },
+
+    {
+        "name": "Aditya Kulkarni",
+        "Department": "IT Department",
+        "date": "12/04/2018",
+        "image": "HR1256.jpg"
+
+    },
+
+    {
+        "name": "Regin Enclonar",
+        "Department": "IT Department",
+        "date": "12/08/2017",
+        "image": "regin.jpg"
+
+    },
+
+
+    {
+        "name": "Anas Hameed",
+        "Department": "IT Department",
+        "date": "12/05/2018",
+        "image": "RV2041.jpg"
+
+    }
+]

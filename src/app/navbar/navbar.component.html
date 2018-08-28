@@ -1,0 +1,23 @@
+<div class="albarakah_logo">
+  <img class="albarakah_logo_img" src="./assets/images/Al-Barakah.png" alt="">
+  <p class="albaraka_logoText">
+      Internal Portal for Employee Comunication
+  </p>
+</div>
+
+<div class="navbar">
+    <mat-toolbar class="matnavbar">
+        <button mat-button class="navbtn"  routerLink ="/home"><i class="fa fa-home"></i>&nbsp; home</button>
+        <a mat-button  class="navbtn"  routerLink="/information_technology"> <i class="fa fa-microchip"></i>&nbsp; information technology</a>
+        <button mat-button  class="navbtn" routerLink = '/takreem'> <i class="fa fa-lightbulb"></i>&nbsp; Ideas    
+        </button>
+        <button mat-button class="navbtn"   routerLink="/document_automation"><i class="fa fa-file-contract"></i>&nbsp; Document Automation</button>
+        <!-- <button mat-button class="navbtn" routerLink="/user_account"><i class="fa fa-user" ></i>&nbsp; my account</button> -->
+        <!-- <button mat-button class="navbtn"><i class="fa fa-folder-open"></i> &nbsp;gallary</button> -->
+        <!-- <a class="navbtn"  href="/downloads"><i class="fa fa-download"></i>  &nbsp; downloads</a> -->
+        <button mat-button class="navbtn"  routerLink="/downloads"><i class="fa fa-download"></i>  &nbsp; downloads</button>
+        <button mat-button class="navbtn" *ngIf="loggedIn" (click)="logout()"><i class="fa fa-lock-open"></i>  &nbsp; Logout</button>
+         <p class="loggedin_nav_user pull-right" *ngIf="loggedIn">You are loggedin as {{user}}</p>
+    </mat-toolbar>
+  
+</div>

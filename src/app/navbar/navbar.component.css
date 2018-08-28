@@ -1,0 +1,26 @@
+p.loggedin_nav_user.pull-right {
+    font-size: 12px;
+    margin-top: 47px;
+}
+
+
+.albarakah_logo {
+   
+    margin-left: 0px;
+    background-position: right;
+    font-family: abel;
+    background-position-y: 1038px;
+}
+
+.albarakah_logo_img {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    position: relative;
+    top: -214px;
+    left: 34%;
+}
+
+.navbar {
+  
+    margin-left: -17px;
+}

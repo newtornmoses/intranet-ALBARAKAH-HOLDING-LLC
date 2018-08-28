@@ -1,0 +1,1041 @@
+
+<link rel="stylesheet" href="../../assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+<div class="documetation row">
+  <h5 class="text-center col-md-12 documentation_head">
+    <img class="documentPic img-responsive" src="./assets/images/doc.svg" alt=""> Document Automation</h5>
+  <hr class="col-md-12">
+  <!-- sidebar -->
+  <div class="col-md-4">
+    <ul class="list-group navigation">
+      <li class="list-group-item parent">HR & ADMIN REPORTS
+
+
+        <ul class="inner">
+          <li class="list-group-item child" (click)="get_DailyReport()">Daily Attendance</li>
+          <li class="list-group-item child" (click)="get_RangeReport()">Employee Attendance</li>
+
+
+        </ul>
+      </li>
+      <li class="list-group-item parent">IT REPORTS
+        <ul class="inner">
+          <li class="list-group-item child" (click)="get_Daily_AccessReport()">Daily Access Reports</li>
+          <li class="list-group-item child" (click)="get_Res_Report()">Res. Access Reports</li>
+          <li class="list-group-item child" (click)="get_PrinterReport()">Printer Usage Reports</li>
+          <li class="list-group-item child" (click)="get_WebReport()">Call Reports</li>
+
+        </ul>
+      </li>
+      <li class="list-group-item parent">SAFTY REPORTS
+
+        <ul class="inner">
+          <li class="list-group-item child" (click)="get_FirstAidReport()">First Aid Details</li>
+          <li class="list-group-item child" (click)="get_safetyReport()">Safty Report</li>
+
+
+
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- details section -->
+  <div class="col-md-8 admin_block">
+    <div class="admin" *ngIf="dailyReport">
+      <h4 class="admin">HR & Administration </h4>
+
+      <div class="form-group col-md-8">
+        <label for="location">Location: &nbsp; &nbsp;</label>
+        <mat-form-field>
+
+          <mat-select [(ngModel)]="document.location"  placeholder="--Select Location--">
+            <mat-option [value]="location.value" *ngFor="let location of location_data">{{location.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+
+
+
+      <div class="form-group col-md-8">
+        <label for="location">Department: &nbsp; &nbsp;</label>
+        <mat-form-field>
+
+          <mat-select [(ngModel)]="document.location" placeholder="--Select Location--">
+            <mat-option [value]="location.DepartmentName" *ngFor="let location of departments">{{location.DepartmentName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+     
+      <br>
+      <div class="form-group col-md-8">
+        <label for="location" >Employee / User ID : </label>
+          <input type="text" name="user_id" placeholder="HR1111"   [(ngModel)]="user_id">
+            </div>
+
+      <br>
+
+      <div class="form-group col-md-8">
+        <label for="location">Report Date : &nbsp; &nbsp;</label>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="date" [(ngModel)]="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <br>
+
+      <div class="col-md-8 getData">
+        <button class="btn-block view_data" (click)="viewData()"> View Data</button>
+        <button class="btn-block get_excell"> Download Excell File</button>
+
+
+      </div>
+
+      <div class="col-md-8 BioAlert" *ngIf="showAlert">
+        <a  class="alert alert-danger"> Please check your user ID</a>
+         
+      </div>
+
+
+      <!-- bio Data -->
+      <div class="col-md-12 bioData" *ngIf="showBioData">
+
+        <h1 class="bioMetricTitle">BIOMETRIC DETAILS</h1>
+        <h4 class="bioMetricID">ID: &nbsp; &nbsp; {{user_id.toUpperCase()}}</h4>
+        <h4 class="bioMetricDate">DATE: &nbsp; &nbsp; {{date}} </h4>
+          <table class="first_aidData table-bordered table-hover table-stripped col-md-12" >
+              <tr>
+                <th>BrIn1</th>
+                <th>BrIn2</th>
+                <th>BrOut1</th>
+                <th>BrOut2</th>
+                <th>BrTime1</th>
+                <th>BrTime2</th>
+                <th>BrTotal</th>
+                <th>Emp_ID</th>
+                <th>InMachine</th>
+                <th>InMachineName</th>
+                <th>InTime</th>
+                <th>MIS_Remarks</th>
+                <th>NetTime</th>
+                <th>OutMachine</th>
+                <th>OutMachineName</th>
+                <th>OutTime</th>
+                <th>PDate</th>
+                <th>Remarks</th>
+                <th>S_InTime</th>
+                <th>S_OutTime</th>
+                <th>ShiftTime</th>
+                <th>ShiftTimes</th>
+                <th>WeekCode</th>
+                <th>WorkTime</th>
+              
+  
+              </tr>
+  
+              <tr *ngFor="let data of bioData">
+                <td>{{data.BrIn1}}</td>
+                <td>{{data.BrIn2}}</td>
+                <td>{{data.BrOut1}}</td>
+                <td>{{data.BrOut2}}</td>
+                <td>{{data.BrTime1}}</td>
+                <td>{{data.BrTime2}}</td>
+                <td>{{data.BrTotal}}</td>
+                <td>{{data.Emp_ID}}</td>
+                <td>{{data.InMachine}}</td>
+                <td>{{data.InMachineName}}</td>
+                <td> <p class="infomation">{{data.InTime}}</p></td>
+                <td><p class="infomation">{{data.MIS_Remarks}}</p></td>
+                <td> <p class="infomation">{{data.NetTime}}</p></td>
+                <td>{{data.OutMachine}}</td>
+                <td>{{data.OutMachineName}}</td>
+                <td> <p class="infomation">{{data.OutTime}}</p></td>
+                <td>{{data.PDate}}</td>
+                <td>{{data.Remarks}}</td>
+                <td>{{data.S_InTime}}</td>
+                <td>{{data.S_OutTime}}</td>
+                <td>{{data.ShiftTime}}</td>
+                <td>{{data.ShiftTimes}}</td>
+                <td>{{data.WeekCode}}</td>
+                <td>{{data.WorkTime}}</td>
+              </tr>
+          </table>
+         
+      </div>
+    </div>
+
+
+
+
+    <div class="range_report" *ngIf="rangeReport">
+      <h4 class="admin">HR & Administration </h4>
+
+      <div class="form-group col-md-8">
+        <label for="location">Location: &nbsp; &nbsp;</label>
+        <mat-form-field>
+
+          <mat-select [(ngModel)]="document.location" placeholder="--Select Location--">
+            <mat-option [value]="location.value" *ngFor="let location of location_data">{{location.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+
+
+
+      <div class="form-group col-md-8">
+        <label for="location">Department: &nbsp; &nbsp;</label>
+        <mat-form-field>
+
+          <mat-select [(ngModel)]="document.location" placeholder="--Select Location--">
+            <mat-option [value]="location.DepartmentName" *ngFor="let location of departments">{{location.DepartmentName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+     
+      <br>
+      <div class="form-group col-md-8">
+        <label for="location" >Employee / User ID : </label>
+          <input type="text" name="user_id" placeholder="HR1111"   [(ngModel)]="user_id">
+            </div>
+
+      <br>
+
+
+     
+
+      <div class="form-group col-md-8">
+        <div class="col-md-4 Date_from">
+          <label for="location">Report Date From: &nbsp; &nbsp;</label>
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose start date" [(ngModel)]="date_1" name="date_1">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker class="picker"></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        &nbsp; &nbsp;
+
+        <div class="col-md-4 date_to">
+
+          <label for="location">Report Date To: &nbsp; &nbsp;</label>
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="Choose end date"  [(ngModel)]="date_2" name="date_2">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 class="picker"></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <br>
+
+
+      <div class="col-md-8 getData">
+        <button class="btn-block view_data" (click)="viewMultipleData()"> View Data</button>
+        <button class="btn-block get_excell"> Download Excell File</button>
+
+
+      </div>
+
+      <div class="col-md-8 BioAlert" *ngIf="showAlert">
+          <a  class="alert alert-danger"> Please check your user ID</a>
+           
+        </div>
+
+      <!-- range bio data -->
+      <div class="col-md-12 bioData" *ngIf="show_range_BioData">
+
+        <h1 class="bioMetricTitle">BIOMETRIC RANGE DETAILS</h1>
+        <h4 class="bioMetricID">ID: {{user_id.toUpperCase()}} &nbsp; &nbsp; </h4>
+        <h4 class="bioMetricDate">DATE:{{date_1 | date: 'shortDate'}} &nbsp; To &nbsp; {{date_2 | date: 'shortDate'}} </h4>
+          <table class="first_aidData range_data table-bordered table-hover table-stripped col-md-12" >
+              <tr>
+                <th>No</th>
+                <th>Date</th>
+                <th>BrIn1</th>
+                <th>BrIn2</th>
+                <th>BrOut1</th>
+                <th>BrOut2</th>
+                <th>BrTime1</th>
+                <th>BrTime2</th>
+                <th>BrTotal</th>
+            
+                <th>InMachineName</th>
+                <th>InTime</th>
+                <th>MIS_Remarks</th>
+                <th>NetTime</th>
+                
+                <th>OutMachineName</th>
+                <th>OutTime</th>
+                
+                <th>Remarks</th>
+                <th>S_InTime</th>
+                <th>S_OutTime</th>
+                <th>ShiftTime</th>
+                <th>ShiftTimes</th>
+                <th>WeekCode</th>
+                <th>WorkTime</th>
+              
+  
+              </tr>
+  
+              <tr *ngFor="let data of rangeBioData; let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{data.PDate.slice(0, 10)}}</td>
+                <td>{{data.BrIn1? data.BrIn1.slice(11, 8): data.BrIn1}}</td>
+                <td>{{data.BrIn2?data.BrIn2.slice(11, 8): data.BrIn2}}</td>
+                <td>{{data.BrOut1?data.BrOut1.slice(11, 8): data.BrOut1}}</td>
+                <td>{{data.BrOut2? data.BrOut2.slice(11, 8) : data.BrOut2}}</td>
+                <td>{{data.BrTime1? data.BrTime1.slice(11, 8): data.BrTime1}}</td>
+                <td>{{data.BrTime2 ? data.BrTime2.slice(11, 8): data.BrTime2}}</td>
+                <td>{{data.BrTotal}}</td>
+               
+              
+                <td>{{data.InMachineName}}</td>
+                <td> <p class="infomation">{{data.InTime? data.InTime.slice(11): data.InTime}}</p></td>
+                <td><p class="infomation">{{data.MIS_Remarks}}</p></td>
+                <td> <p class="infomation">{{data.NetTime? data.NetTime.slice(11): data.NetTime}}</p></td>
+                
+                <td>{{data.OutMachineName}}</td>
+                <td> <p class="infomation">{{data.OutTime? data.OutTime.slice(11): data.OutTime}}</p></td>
+                
+                <td>{{data.Remarks}}</td>
+                <td>{{data.S_InTime? data.S_InTime.slice(11): data.S_InTime}}</td>
+                <td>{{data.S_OutTime?data.S_OutTime.slice(11): data.S_OutTime}}</td>
+                <td>{{data.ShiftTime? data.ShiftTime.slice(11): data.ShiftTime}}</td>
+                <td>{{data.ShiftTimes? data.ShiftTimes.slice(11): data.ShiftTimes}}</td>
+                <td>{{data.WeekCode}}</td>
+                <td>{{data.WorkTime?data.WorkTime.slice(11): data.WorkTime}}</td>
+              </tr>
+
+              <br>
+
+              <br>
+          </table>
+         
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+    <div class="range_report" *ngIf="dailyAccessReport">
+      <h4 class="admin">Dinner Access Control </h4>
+
+      <mat-radio-group [(ngModel)]="dinnerAccess" name="dinnerAccess" (change)="getSelectedOption($event)">
+        <div class=" col-md-8">
+          <label for="location">Dinner Access Details: &nbsp; &nbsp;</label>
+          <mat-radio-button value="dinnerAccess_details"></mat-radio-button>
+        </div>
+
+        <div class="col-md-8">
+          <label for="location">Dinner Access Summary: &nbsp; &nbsp;</label>
+          <mat-radio-button value="dinnerAccess_summary"></mat-radio-button>
+        </div>
+
+        <div class=" col-md-8">
+          <label for="location">Gate Access: &nbsp; &nbsp;</label>
+          <mat-radio-button value="Gate_access"></mat-radio-button>
+        </div>
+
+        <div class=" col-md-8">
+          <label for="location">Dinner Invalid Analysis Details: &nbsp; &nbsp;</label>
+          <mat-radio-button value="dinner_invalid_details"></mat-radio-button>
+        </div>
+
+        <div class=" col-md-8">
+          <label for="location">Dinner Invalid Analysis Summary: &nbsp; &nbsp;</label>
+          <mat-radio-button value="dinner_invalid_summery"></mat-radio-button>
+        </div>
+      </mat-radio-group>
+
+
+      <br>
+
+
+
+
+
+
+
+
+      <br>
+
+      <div class="form-group col-md-8">
+        <label for="location">Report Date : &nbsp; &nbsp;</label>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="Picked_date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <br>
+
+      <div class="col-md-8 getData">
+        <button class="btn-block view_data"> View Data</button>
+        <button class="btn-block get_excell"> Download Excell File</button>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- res. access section -->
+    <div class="range_report" *ngIf="res_access">
+      <h4 class="admin">Resident Access Reports </h4>
+
+      <mat-radio-group [(ngModel)]="ResidentAccess" name="ResidentAccess" (change)="getSelectedResidenceReport($event)">
+        <div class=" col-md-8">
+          <label for="location">All Access Records: &nbsp; &nbsp;</label>
+          <mat-radio-button value="All_accessRecords" color="primary"></mat-radio-button>
+        </div>
+
+        <div class="col-md-8">
+          <label for="location">Diner Access Records: &nbsp; &nbsp;</label>
+          <mat-radio-button value="ResidenceDinnerAccessRecords" color="primary"></mat-radio-button>
+        </div>
+
+        <div class=" col-md-8">
+          <label for="location">Gate Access Records: &nbsp; &nbsp;</label>
+          <mat-radio-button value="ResidenceGate_access" color="primary"></mat-radio-button>
+        </div>
+      </mat-radio-group>
+
+
+
+
+      <br>
+
+      <div class="duration col-md-8">
+        <div class="col-md-8">
+          <mat-checkbox [(ngModel)]="all_Residential_tenants" value="all_tenants" color="primary">All Tenants</mat-checkbox>
+        </div>
+
+        <div class="col-md-8">
+          <label for="location">Select Location: </label> &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="resident_location" placeholder="--Select Location --">
+              <mat-option [value]="location.value" *ngFor="let location of residential_locations">{{location.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="col-md-8">
+          <label for="location">Select Duration: </label> &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="resident_duration" placeholder="--Select Duration --">
+              <mat-option [value]="duration.value" *ngFor="let duration of residential_durations">{{duration.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="col-md-8">
+          <label for="location">Select Client: </label> &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="resident_client" placeholder="--Select Client --">
+              <mat-option [value]="client.value" *ngFor="let client of residential_clients">{{client.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+
+
+        <div class="col-md-8">
+          <label for="Badge">Badge No/Resident No: </label> &nbsp; &nbsp;
+
+          <input type="text" name="badge_number" class="form-control" placeholder="e.g HR1111">
+        </div>
+
+        <button type="submit" class="btn btn-primary col-md-8 col-offset-4 Residence">Download</button>
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <!-- printer usage section -->
+    <div class="range_report" *ngIf="printer_usage">
+      <h4 class="text-center">
+        printer_usage Report
+      </h4>
+
+    </div>
+
+
+    <!-- web access section -->
+    <div class="range_report" *ngIf="webAccess">
+      <h4 class="text-center">
+        webAccess Report
+      </h4>
+
+    </div>
+
+    <!-- first Aid section -->
+    <div class="range_report" *ngIf="firstAid">
+      <h4 class="admin">First Aid Details </h4>
+
+     <div class="row">
+      
+    
+
+      <div class="col-md-8 firstAid">
+        <div class="col-md-8 form-group">
+            <h4 class="searchDetails">Search For recent Reports</h4>
+          <div class="col-md-8">
+            <label for="Serial No"> Serial No:</label>
+          </div>
+          <div class="row">
+            <form action="" class="searchForm" (submit)="getSearchData()">
+            <div class="col-md-8">
+              <input type="number" name="serial" [(ngModel)]="serial" class="form-control" placeholder="search serial_number">
+            </div>
+
+            <button class="btn btn-success col-md-4 firstAid">
+              <i class="fa fa-search"></i> Search</button>
+
+            </form>
+
+            <div class="alert alert-danger col-md-12" *ngIf ="alertMsg">
+              {{errorMsg}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+        <table class="first_aidData table-bordered table-hover table-stripped col-md-12" *ngIf="showTable">
+            <tr>
+              <th>SerNo</th>
+              <th>FASerNo</th>
+              <th>LocationNo</th>
+              <th>ReportDate</th>
+              <th>ReportTime</th>
+              <th>TypeNo</th>
+              <th>CompanyName</th>
+              <th>DepartmentCode</th>
+              <th>IDNumber</th>
+              <th>ResidentName</th>
+              <th>Complaint</th>
+              <th>Diagnosis</th>
+              <th>Treatment</th>
+              <th>HospitalCode</th>
+              <th>PatientContactNo</th>
+              <th>DriverCode</th>
+              <th>OfficerCode</th>
+              <th>Designation</th>
+              <th>IsDuty</th>
+              <th>IsWorkRelated</th>
+              <th>InsertBy</th>
+              <th>InsertTime</th>
+              <th>UpdateBy</th>
+              <th>UpdateTime</th>
+
+            </tr>
+
+            <tr>
+              <td>{{firstAid_data.SerNo}}</td>
+              <td>{{firstAid_data.FASerNo}}</td>
+              <td>{{firstAid_data.LocationNo}}</td>
+              <td>{{firstAid_data.ReportDate}}</td>
+              <td>{{firstAid_data.ReportTime}}</td>
+              <td>{{firstAid_data.TypeNo}}</td>
+              <td>{{firstAid_data.CompanyName}}</td>
+              <td>{{firstAid_data.DepartmentCode}}</td>
+              <td>{{firstAid_data.IDNumber}}</td>
+              <td>{{firstAid_data.ResidentName}}</td>
+              <td> <p class="infomation">{{firstAid_data.Complaint}}</p></td>
+              <td><p class="infomation">{{firstAid_data.Diagnosis}}</p></td>
+              <td> <p class="infomation">{{firstAid_data.Treatment}}</p></td>
+              <td>{{firstAid_data.HospitalCode}}</td>
+              <td>{{firstAid_data.PatientContactNo}}</td>
+              <td>{{firstAid_data.DriverCode}}</td>
+              <td>{{firstAid_data.OfficerCode}}</td>
+              <td>{{firstAid_data.Designation}}</td>
+              <td>{{firstAid_data.IsDuty}}</td>
+              <td>{{firstAid_data.IsWorkRelated}}</td>
+              <td>{{firstAid_data.InsertBy}}</td>
+              <td>{{firstAid_data.InsertTime}}</td>
+              <td>{{firstAid_data.UpdateBy}}</td>
+              <td>{{firstAid_data.UpdateTime}}</td>
+            </tr>
+        </table>
+      
+
+        <!-- create Form -->
+<form action="" (submit)="addReport($event)">
+      <h4 class="newForm col-md-8 " (click)="showCreateForm()"> Create new Report</h4>
+     <div class="creatForm" *ngIf="createForm">
+      <div class="col-md-8 form-group">
+        
+        <div class="col-md-8">
+          <label for="Location">Select the Location:</label>
+          &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="firstAid_location" name="firstAid_location" placeholder="--Select Location--">
+              <mat-option [value]="loc.LocationNo" *ngFor="let loc of residential_locations"> {{loc.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <!-- refered date -->
+      <div class="col-md-8 form-group">
+        <div class="col-md-8">
+          <label for="Location"> Reffered Date:</label>
+          &nbsp; &nbsp;
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="Report_date" [(ngModel)]="Report_date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- refered time -->
+      <div class="col-md-8 form-group">
+        <div class="col-md-8">
+          <label for="Location"> Reffered Date:</label>
+          <div class="time">
+            <div class="col-md-12">
+              <div class="col-md-6 hrs">
+                <label for="hours">Hours: &nbsp; &nbsp;</label>
+              <mat-form-field>
+                <mat-select [(ngModel)]="hoursSelected" name="hoursSelected" placeholder="select Hours" >
+                    <mat-option [value]="hr" *ngFor="let hr of hours">{{hr}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              </div>
+
+              <div class="col-md-6 minutes">
+                  <label for="hours">Minutes:  &nbsp; &nbsp;</label>
+                <mat-form-field>
+                  <mat-select [(ngModel)]="minuteSelected" name="minuteSelected" placeholder="select Minutes">
+                      <mat-option [value]="min" *ngFor="let min of minutes">{{min}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                </div>
+                <p class="timeSelected">{{hoursSelected}} : {{minuteSelected}} {{hoursSelected >= 12   ?  ' PM' :'AM'}}</p>
+
+               
+            </div>
+          </div>
+          
+          &nbsp; &nbsp;
+
+
+        </div>
+      </div>
+
+         <!-- // patient -->
+      <div class="col-md-8 form-group">
+        <div class="col-md-8">
+          <label for="Location">Patient Type:</label>
+          &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="firstAid_patient" name="firstAid_patient" placeholder="--Select Patient--">
+              <mat-option value="1">Company Staff</mat-option>
+              <mat-option value="2">Tenant</mat-option>
+            </mat-select>
+   
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="col-md-8 form-group">
+        <div class="col-md-8">
+          <label for="Duty Status">Duty Status:</label>
+          &nbsp; &nbsp;
+          <mat-radio-group [(ngModel)]="duty_status" name="duty_status" (change)="getDutty($event)">
+            <mat-radio-button value="false">Off Dutty</mat-radio-button> &nbsp; &nbsp;
+            <mat-radio-button value="true">On Dutty</mat-radio-button>
+
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="col-md-8"> 
+        <label for="company">Company Name: </label>
+        
+          &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="Selectedcompany"  name="Selectedcompany" placeholder="--Select company--">
+                <mat-option [value]="[company.CompanyCode, company.CompanyName] " *ngFor="let company of companies">{{company.CompanyName}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+
+
+      <div class="col-md-8 form-group">
+        <div class="col-md-8">
+          <label for="Location"> Department:</label>
+          &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="firstAid_department" name="firstAid_department" placeholder="--Select department--">
+              <mat-option [value]="dept.DepartmentCode" *ngFor="let dept of departments">{{dept.DepartmentName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="col-md-8">
+        <label for="company"> ID Number: </label>
+        <input type="text" [(ngModel)]="IDNumber" name="IDNumber" placeholder="--Type your id--" class="form-control">
+      </div>
+
+      <div class="col-md-8">
+        <label for="company">Patient Name: </label>
+        <input type="text" [(ngModel)]="ResidentName" name="ResidentName" placeholder="--Type company--" class="form-control">
+      </div>
+
+
+      <div class="col-md-8">
+        <label for="company"> Designation: </label>
+        <input type="text" [(ngModel)]="Designation" name="Designation" placeholder="--select company--" class="form-control">
+      </div>
+
+      <div class="col-md-8">
+        <label for="company"> Contact No: </label>
+        <input type="text" [(ngModel)]="PatientContactNo" name="PatientContactNo" placeholder="--select company--" class="form-control">
+      </div>
+      <hr class="col-md-12">
+
+      <div class="work_relatedForm col-md-12">
+        <div class="col-md-4 col-md-offset-4">
+          <mat-checkbox [(ngModel)]="IsWorkRelated" name="IsWorkRelated" value="1" color="primary">Work Related Cause</mat-checkbox>
+        </div>
+
+        <div class="col-md-12">
+
+          <div class="col-md-12 textareaGroup">
+            <div class="col-md-4">
+              <label for="Complaint">Complaint:</label>
+            </div>
+            <div class="col-md-8">
+              <textarea [(ngModel)]="Complaint" name="Complaint" placeholder="--complaint goes here--" class="form-control"></textarea>
+            </div>
+
+          </div>
+
+
+          <div class="col-md-12">
+
+            <div class="col-md-12 textareaGroup">
+              <div class="col-md-4">
+                <label for="Complaint">Diagnosis:</label>
+              </div>
+              <div class="col-md-8">
+                <textarea [(ngModel)]="Diagnosis" name="Diagnosis" placeholder="--Diagnosis details here--" class="form-control"></textarea>
+              </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+
+              <div class="col-md-12 textareaGroup">
+                <div class="col-md-4">
+                  <label for="Complaint">Treatment:</label>
+                </div>
+                <div class="col-md-8">
+                  <textarea name="Treatment" [(ngModel)]="Treatment" placeholder="--Treatment details here--" class="form-control"></textarea>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+
+              <div class="col-md-12 textareaGroup">
+                <div class="col-md-8">
+                  <label for="Complaint">Hospital:</label>
+                  &nbsp; &nbsp;
+                  <mat-form-field>
+                    <mat-select [(ngModel)]="HospitalCode" name="HospitalCode" placeholder="--Select Hospital">
+                      <mat-option [value]="hsp.Hospitalcode" *ngFor="let hsp of hospitals">{{hsp.Hospitalname}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+
+              <div class="col-md-12 textareaGroup">
+                <div class="col-md-8">
+                  <label for="Complaint">Driver:</label>
+                  &nbsp; &nbsp;
+                  <mat-form-field>
+                    <mat-select [(ngModel)]="firstAid_Driver" name="firstAid_Driver" placeholder="--Select Driver">
+                      <mat-option [value]="drivers.DriverCode" *ngFor="let drivers of driver">{{drivers.DriverName}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+
+              <div class="col-md-12 textareaGroup">
+                <div class="col-md-8">
+                  <label for="Complaint">Duty Officer:</label>
+                  &nbsp; &nbsp;
+                  <mat-form-field>
+                    <mat-select [(ngModel)]="firstAid_Duty_Officer" name="firstAid_Duty_Officer" placeholder="--Select Duty Officer">
+                      <mat-option [value]="officer.OfficerCode" *ngFor="let officer of officers">{{officer.OfficerName}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-12">
+
+                <label for="month"> Safety Officer: </label>
+                &nbsp; &nbsp; &nbsp;
+      
+                <mat-form-field>
+                  <mat-select [(ngModel)]="insertedBy"  name="insertedBy" placeholder="--Select your Name--">
+                    <mat-option [value]="insert" *ngFor="let insert of safty_operator">{{insert}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <!-- alert section -->
+
+              <div class="col-md-12 alertReport" *ngIf="alertPannel">
+                <h4 class="alertTxt"> Status</h4>
+                
+                <p class="alert alert-danger">{{alertReportMsg}}</p>
+                <div class="col-md 6 col-md-offset-4">
+                  <button class="btn btn-success btn-block" (click)="hideWarning()" >Ok</button>
+                </div>
+              </div>
+
+              
+              <div class="col-md-12 alertReport" *ngIf="alertPannel2">
+                  <h4 class="alertTxt"> Status</h4>
+                  
+                  <p class="alert alert-success">{{alertReportMsg}}</p>
+                  <div class="col-md 6 col-md-offset-4">
+                    <button class="btn btn-success btn-block" (click)="hideWarning()">Ok</button>
+                  </div>
+                </div>
+
+
+            <!-- action btns -->
+            <div class="col-md-12 actionbtns">
+              <button type="submit"  class="btn btn-success" >Add New</button>
+              <button  class="btn btn-info" disabled>Edit</button>
+              <button  class="btn btn-primary" disabled>Confirm</button>
+              <button  class="btn btn-danger" disabled>Cancle</button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+   
+      <div class="col-md-4 firstAid">
+        <h4 class="text-center">
+          <img src="./assets/images/safty/nurse-1.png" alt="" class="img-carosel firstAid_img">
+        </h4>
+      </div>
+
+      </div>
+      </form>
+
+    </div>
+    
+  </div>
+  
+
+
+
+    <!-- saft section -->
+    <div class="range_report" *ngIf="safty">
+      <h4 class="admin">Safty Reports </h4>
+      <div class="col-md-8">
+        <div class="col-md-8 safty">
+          <label for="safty">Select Location: </label>
+          &nbsp; &nbsp; &nbsp;
+
+          <mat-form-field>
+            <mat-select [(ngModel)]="saftyLocation" name="saftyLocation" placeholder="--Select Location--" required>
+              <mat-option [value]="location.LocationNo" *ngFor="let location of residential_locations">{{location.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-md-8">
+          <label for="patient">Patient Type: </label>
+          &nbsp; &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-select [(ngModel)]="safty_patient" name="safty_patient" placeholder="--Select Patient--" required>
+              <mat-option value="1">Company Stuff</mat-option>
+              <mat-option value="2">Tenant</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="col-md-8 safty">
+
+          <label for="safty"> Report Year: </label>
+          &nbsp; &nbsp; &nbsp;
+
+          <mat-form-field>
+            <mat-select [(ngModel)]="saftyYears" name="saftyYears"  placeholder="--Select Year--" required>
+              <mat-option [value]="year" *ngFor="let year of safty_dates">{{year}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+        <div class="col-md-8 alert" *ngIf="myalert">
+          <p class="alert alert-danger">All fields are required!!!</p>
+        </div>
+
+       
+
+        <div class="col-md-8 col-md-offset-2 btnSection">
+           
+
+          <button class="btn btn-primary viewdata" (click)="view_data()">
+            <i class="fa fa-eye"></i>
+            &nbsp; &nbsp; &nbsp;View Data  </button>
+
+            <button class="btn btn-primary downloadExcell" (click)="downloadFile()">
+                <i class="fa fa-file-excel"></i>
+                &nbsp; &nbsp; &nbsp; Download File</button>
+         
+        </div>
+
+        
+      </div>
+        <div class="safteyTable_Container" *ngIf="saftyReportArray2.length > 0">
+         
+        <table class="saftyData table-bordered table-hover table-stripped col-md-12" *ngIf="showSafteyTable">
+          <tr >
+           
+            <th>SerNo</th>
+            <th>FASerNo</th>
+            <th>LocationNo</th>
+            <th>ReportDate</th>
+            <th>ReportTime</th>
+            <th>TypeNo</th>
+            <th>CompanyName</th>
+            <th>DepartmentCode</th>
+            <th>IDNumber</th>
+            <th>ResidentName</th>
+            <th>Complaint</th>
+            <th>Diagnosis</th>
+            <th>Treatment</th>
+            <th>HospitalCode</th>
+            <th>PatientContactNo</th>
+            <th>DriverCode</th>
+            <th>OfficerCode</th>
+            <th>Designation</th>
+            <th>IsDuty</th>
+            <th>IsWorkRelated</th>
+            <th>InsertBy</th>
+            <th>InsertTime</th>
+            <th>UpdateBy</th>
+            <th>UpdateTime</th>
+
+          </tr>
+
+          <tr  *ngFor ="let saftyReportArray of saftyReportArray2 ; let i = index">
+           
+            <td>{{saftyReportArray.SerNo}}</td>
+            <td>{{saftyReportArray.FASerNo}}</td>
+            <td>{{saftyReportArray.LocationNo}}</td>
+            <td>{{saftyReportArray.ReportDate}}</td>
+            <td>{{saftyReportArray.ReportTime}}</td>
+            <td>{{saftyReportArray.TypeNo}}</td>
+            <td>{{saftyReportArray.CompanyName}}</td>
+            <td>{{saftyReportArray.DepartmentCode}}</td>
+            <td>{{saftyReportArray.IDNumber}}</td>
+            <td>{{saftyReportArray.ResidentName}}</td>
+            <td> <p class="infomation">{{saftyReportArray.Complaint}}</p></td>
+            <td><p class="infomation">{{saftyReportArray.Diagnosis}}</p></td>
+            <td> <p class="infomation">{{saftyReportArray.Treatment}}</p></td>
+            <td>{{saftyReportArray.HospitalCode}}</td>
+            <td>{{saftyReportArray.PatientContactNo}}</td>
+            <td>{{saftyReportArray.DriverCode}}</td>
+            <td>{{saftyReportArray.OfficerCode}}</td>
+            <td>{{saftyReportArray.Designation}}</td>
+            <td>{{saftyReportArray.IsDuty}}</td>
+            <td>{{saftyReportArray.IsWorkRelated}}</td>
+            <td>{{saftyReportArray.InsertBy}}</td>
+            <td>{{saftyReportArray.InsertTime}}</td>
+            <td>{{saftyReportArray.UpdateBy}}</td>
+            <td>{{saftyReportArray.UpdateTime}}</td>
+          </tr>
+      </table>
+          
+        </div>    
+       
+        
+
+
+
+       
+
+      <div class="col-md-4">
+        
+
+         
+              <img class="img-carosel" src="./assets/images/safty/031-fire-extinguisher.png" alt="Slide 3" />
+           
+          </div>
+         
+      
+  </div>
+</div>

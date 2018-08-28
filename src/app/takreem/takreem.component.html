@@ -1,0 +1,88 @@
+
+ 
+ <div class="takreem_content">
+ <div class="container">
+    <h4 class="takreem text-center" ><i class="fa fa-lightbulb"></i> Takreem </h4>
+    <p class="takreamText text-center">Share your ideas withs us</p>
+    <div class="takreemForm col-md-6 col-md-offset-3">
+      <form action="" class="takreemRealForm" (submit)="getFormData($event)">
+        <div class="form-group ">
+          <label for="your idea">Your Idea:</label>
+          <textarea name="idea" [(ngModel)]="takreem.idea" class="form-control" cols="30" rows="10" placeholder="Your idea here..." required></textarea>
+        </div>
+
+        <div class="form-group ">
+            <label for="purpose"  class="col-md-12">I believe My Idea Will:</label>
+            <div class="checkbox_takreem col-md-12">
+            <mat-checkbox [(ngModel)]="takreem.ideaWill.saveMoney"  name="saveMoney" class="col-md-6" value="ideaWill.saveMoney" color="primary"> Save Money</mat-checkbox>
+            <mat-checkbox [(ngModel)]="takreem.ideaWill.saveTime"  name="saveTime"  class="col-md-6" value="ideaWill.saveTime" color="primary"> Save Time</mat-checkbox>
+            <mat-checkbox [(ngModel)]="takreem.ideaWill.betterQuality"  name="betterQuality"  class="col-md-6" value="ideaWill.betterQuality" color="primary"> Better Quality </mat-checkbox>
+            <mat-checkbox [(ngModel)]="takreem.ideaWill.CustomerExperience"  name="CustomerExperience"  class="col-md-6" value="ideaWill.CustomerExperience" color="primary"> Customer  Experience</mat-checkbox>
+          </div>
+          </div>
+
+
+          <div class="form-group ">
+              <label for="name">Your Name:</label>
+                  <input  name="name" class="form-control"  [(ngModel)]="takreem.name" type="text" placeholder="type your name" required>
+            </div>
+            
+            
+          <div class="form-group ">
+              <label for="name">Your Email:</label>
+                  <input  name="email"  [(ngModel)]="takreem.email" class="form-control" type="text" placeholder="e.g examplemail@gmail.com" required>
+            </div>
+
+            
+          <div class="form-group ">
+              <label for="name">Your Department:</label>
+                 <mat-select [(ngModel)]="takreem.department" name="department" placeholder="--Select Department" required>
+                     <mat-option [value]="dept.DepartmentCode" *ngFor="let dept of departments">{{dept.DepartmentName}}</mat-option>
+                    
+
+                 </mat-select>
+            </div>
+
+
+            <div class="form-group ">
+              <label for="part_of">Would you like to be part of the implementation team?:</label>
+              <div class="checkbox_part_of col-md-12">
+                <mat-radio-group [(ngModel)]="takreem.part_of" name="part_of"  required>
+                  
+                <mat-radio-button    class="col-md-6" value="yes" name="yes" color="primary">Yes</mat-radio-button>
+                <mat-radio-button value="no" class="col-md-6" name="no" color="accent">No</mat-radio-button>
+                <mat-radio-button  class="col-md-12" value="more_info" name="yes" color="accent">No, but I can provide  more info</mat-radio-button>
+                 </mat-radio-group>
+              </div>
+              
+            </div>
+
+
+            <div class="form-group ">
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+                
+            </div>
+</form>
+
+            
+    </div>
+  </div>
+</div>
+
+
+<!-- alert -->
+
+
+<div class="alertDiv" *ngIf="showAlert">
+  <p class="alertDetails">{{successMsg}}</p>
+  <div class="okbtn">
+    <a  class="btn btn-primary m-2"  (click)="cancleAlert($event)">OK</a>
+  </div>
+
+</div>
+
+
+
+
+   

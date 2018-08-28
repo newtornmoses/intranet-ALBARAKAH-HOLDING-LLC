@@ -1,0 +1,123 @@
+
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="userSection">
+    <div class="row">
+      <div class="col-md-12">
+  
+      </div>
+  
+      <div class="col-md-4">
+        <h4 class="card_title" style="font-family: abel"> Welcome MARIA JOHNNES</h4>
+         <div class="card">
+           <img src="./assets/images/dummy.jpg" alt="" class="card-img-top">
+           
+           <div class="card-footer">
+             <img src="./assets/images/Al-Barakah.png" class="img-responsive"  alt="" class="cardFooter">
+           </div>
+         </div>
+      </div>
+
+
+      <div class="col-md-4 account_details">
+         <h3 class="text-center about" style="font-family: abel">My Profile</h3>
+         <h4 class="general_info">General Information</h4>
+           <p class="general_info_details">
+             Name: MARIA JOHNNES
+           </p>
+
+           <p class="general_info_details">
+              Department: Accounts
+            </p>
+
+            <p class="general_info_details">
+                Designation: Senior Accountant
+              </p>
+
+              <br>
+
+         <h4 class="general_info">Additional Information</h4>
+
+
+            <p class="general_info_details">
+                Birth Day: 12/Oct
+              </p>
+
+              <p class="general_info_details">
+                Supervisor: Markson Gill
+              </p>
+
+              <p class="general_info_details">
+                Email: mariajohnes23@albarakah.ae
+              </p>
+
+              <br>  
+         <h4 class="general_info">Personal Information</h4>
+         <p class="general_info_details">
+          Hobbies: 
+            
+        </p>    
+        <ul class="hobies">
+          <li class="list-group-item">Tennis</li>
+          <li class="list-group-item">Swimming</li>
+
+        </ul>    
+
+
+      </div>
+
+      <hr class="col-md-8">
+  
+      <div class="col-md-8">
+              <h3 class="text-center extras">Extras</h3>
+        <ul class="myaccout_tab">
+          <li class="list-group-item" (click)="ShowQuickEmail()">Quick Emails</li>
+          <li class="list-group-item">My Data</li>
+          <li class="list-group-item">Change My Profile</li>
+        </ul>
+
+
+        <div class="col-md-12 quickEmails" *ngIf="Quickemails">
+          <div class="headerSection">
+              <h4 class="quickEmails_header">Welcome To Quick Emails</h4>
+              <p class="emailsSoln">A solution to speed up office emailling</p>
+          </div>
+          <img src="./assets/images/paper-plane.png" alt="" class="email_pic">
+          
+                   <div class="simple_Search col-md-4">
+                     <label for="search">Search Contact:</label>
+                      <input type="text" name="search" class="form-control" placeholder="search" (keyup)="get_userSearch($event)">
+                   </div>
+              <!-- table -->
+              <table class="myaccount_quick_emails table-hover table-stripped table-bordered col-md-12" width="100%">
+
+                  <tr>
+                      <th>Department <i class="fa fa-building"></i></th>
+                      <th>Extension User <i class="fa fa-user"></i> </th>
+                      <th>Send Email <i class="fa fa-envelope"></i></th>
+                      
+
+
+                  </tr>
+
+                  <tr *ngFor="let item of telephone_Array"  >
+                      <td>{{item.department}}</td>
+                      <td>{{item.extension_user}}</td>
+                      <td>
+                        <a href="mailto:{{item.extension_user}}@albarakah.ae?body=hi {{item.extension_user}} i am writing to you to inform you that i need yo help as soon as possible plz " class="btn btn-success quick_mail_btn">Quick Mail</a>
+                      </td>
+                  </tr>
+
+
+
+              </table>
+
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+</div>

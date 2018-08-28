@@ -1,0 +1,471 @@
+.documetation.row {
+    margin-bottom: 73px;
+}
+
+li.list-group-item {
+    color: white;
+    background: rgb(57, 66, 70);
+}
+
+ul.inner li.list-group-item {
+    background: linear-gradient(#1f739c, rgba(0,0,0,0.2));
+    box-shadow: 0px -2px 0px 0px #c8f9ff;
+    border: 2px solid rgb(37, 36, 36);
+    cursor: pointer;
+    height: 44px;
+    border-radius: 0px 20px;
+}
+
+ul.list-group.navigation {
+    background: rgb(50, 60, 64);
+    height: 100vh;
+    width:  300px;
+}
+
+li.list-group-item.parent {
+    height: 204px;
+    margin-bottom: 26px;
+    border: none;
+    box-shadow: -14px 20px 17px 0px black;
+    width:  300px;
+    height: 221px;
+}
+
+li.list-group-item.child:hover {
+    background: rgb(0, 188, 212) !important;
+}
+
+h5.text-center.col-md-12.documentation_head {
+    font-family: abel;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+.mat-option-text {
+    width: 400px !important;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.42) !important;
+}
+
+
+.admin_block[_ngcontent-c5] {
+    background: whitesmoke;
+    padding: 65px 10px;
+    border: 1px solid rgba(165, 164, 163, 0.341);
+    width: 59%;
+    margin-left: -45px;
+}
+
+.col-md-8 {
+    padding :10px; 
+}
+button.btn-block.view_data {
+    background: rgba(0, 0, 0, 0.671);
+    color: white;
+    height: 32px;
+    border: none;
+}
+
+button.btn-block.get_excell {
+    border: none;
+    height: 27px;
+    background: rgb(0, 188, 212);
+}
+
+h4.admin {
+    background: white;
+    box-shadow: 3px 1px 7px rgba(0, 0, 0, 0.22);
+    height: 33px;
+    line-height: 2;
+    text-align: center
+}
+
+button.btn-block.view_data:hover {
+    background: slategrey;
+}
+
+button.btn-block.get_excell:hover {
+    background: rgb(97, 199, 212);
+}
+
+img.documentPic.img-responsive {
+    width: 155px;
+    position: absolute;
+    left: 33%;
+    top: -30px;
+}
+
+
+.col-md-4.date_to {
+    margin-left: 159px;
+}
+
+span.mat-button-wrapper {
+    margin-left: 28px !important;
+}
+
+
+button.btn.btn-primary.col-md-8.col-offset-4.Residence {
+    border: 0px;
+    border-radius: 0px;
+}
+
+img.safty_pic {
+    transform: scale(0.8);
+    margin-left: -204px;
+    margin-top: -18px;
+}
+
+
+.carousel-inner {
+    width: 222px;
+    margin-left: 77px;
+    margin-top: 41px;
+    height: 342px;
+}
+div#carousel {
+    width: 411px;
+    margin-left: -144px;
+}
+
+.right.carousel-control {
+    background: none;
+}
+
+.left.carousel-control {
+    background: none;
+}
+
+button.btn.btn-success.col-md-4.firstAid {
+    margin-top: 10px;
+    border-radius: 0px;
+    width: 300px
+}
+
+
+
+body {
+    box-sizing: border-box;
+   
+    
+}
+
+.safteyTable_Container {
+    height: 446px;
+    overflow: scroll;
+    width: 842px;
+    padding: 26px;
+    margin-left: -42px;
+    border: 1px solid grey;
+    box-shadow: -6px 7px 15px rgba(64, 63, 63, 0.37);
+}
+
+
+.textareaGroup textarea.form-control {
+    width: 595px;
+    margin-left: -173px;
+    padding: 9px;
+    margin-top: 17px;
+}
+
+
+.work_relatedForm.col-md-12 {
+    background: #00BCD4;
+    padding: 15px;
+    box-shadow: -6px -6px 9px rgba(0, 0, 0, 0.32);
+    color: white;
+}
+
+
+
+.img-carosel{
+    
+    -webkit-animation: bounce 4s cubic-bezier(0.28, 1.49, 0.3, -0.64) infinite;
+    animation: bounce 4s cubic-bezier(0.28, 1.49, 0.3, -0.64) infinite;
+    transition: all 6s cubic-bezier(0.13, 1.03, 0.96, -0.19);
+    animation-direction: alternate-reverse;
+
+}
+
+img.img-carosel.firstAid_img {
+    position: absolute;
+    bottom: 1500px;
+    left: 501px;
+    
+}
+
+@keyframes bounce {
+    0%{
+        transform: translateY(0px)
+    }
+
+    /* 50%{
+        transform: translateY(0px)
+    } */
+
+    100%{
+        transform: translateY(100px)
+    }
+}
+
+
+@-webkit-keyframes bounce {
+    0%{
+        transform: translateY(0px)
+    }
+
+    /* 50%{
+        transform: translateY(0px)
+    } */
+
+    100%{
+        transform: translateY(100px)
+    }
+}
+
+
+@-moz-keyframes bounce {
+    0%{
+        transform: translateY(0px)
+    }
+
+    /* 50%{
+        transform: translateY(0px)
+    } */
+
+    100%{
+        transform: translateY(100px)
+    }
+}
+
+
+.col-md-12.actionbtns {
+    margin-left: 55px;
+    width: 691px;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.actionbtns button {
+    border-radius: 0px;
+    width: 164px;
+}
+
+.col-md-8.admin_block {
+    border: 1px solid rgba(128, 128, 128, 0.73);
+    width: 849px;
+    padding: 36px;
+}
+
+.col-md-8.firstAid {
+    background: #dadada;
+    color: dimgrey;
+}
+
+h4.searchDetails {
+    font-family: abel;
+    font-size: 24px;
+    border-bottom: 1px solid #ccbebe;
+}
+h4.newForm.col-md-8 {
+    background: whitesmoke;
+    border: 1px solid #d2d0d0;
+    color: steelblue;
+    text-transform: capitalize;
+    margin-top: 88px;
+}
+
+.first_aidData tr {
+    display: inline-grid;
+    width: 255px;
+}
+
+th , td{
+    height: 31px;
+}
+
+td {
+    width: 584px;
+    background: whitesmoke;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+    background: whitesmoke;
+    margin-left: -13px;
+    
+}
+
+.alert.alert-danger.col-md-12.ng-star-inserted {
+    position: absolute;
+    top: 163px;
+    background: #f5c7bf;
+    border: 0px;
+    box-shadow: -9px -5px 14px #c1b7b7;
+}
+
+p.infomation {
+    text-transform: lowercase;
+    color: #f70244;
+    
+}
+
+
+h4.newForm.col-md-8 {
+    cursor: pointer;
+    width: 371px;
+}
+.time .mat-form-field.mat-primary.mat-form-field-type-mat-select.mat-form-field-appearance-legacy {
+    width: 53px;
+   
+}
+
+.alertReport[_ngcontent-c2] button[_ngcontent-c2] {
+    background: teal;
+    border: 0px;
+    padding: -11px;
+    margin-bottom: 10px;
+    position: relative;
+    left: -19%;
+    width: 50%;
+}
+
+.time {
+    width: 203px;
+    background: #545452;
+    height: 162px;
+    box-shadow: 2px 2px 0px 0px #bfbfbf;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.time .col-md-12 {
+    background: white;
+    border-radius: 12px;
+    height: 139px;
+    box-shadow: inset 0px -1px 3px 1px #a09e9e;
+}
+
+
+
+p.timeSelected {
+    text-align: center;
+}
+
+
+
+
+
+.col-md-12.alertReport {
+    background: whitesmoke;
+    color: black;
+    text-align: center;
+    box-shadow: -8px 7px 13px rgba(78, 76, 76, 0.42);
+    position: absolute;
+    bottom: -3px;
+    z-index: 1;
+}
+
+
+h4.alertTxt {
+    background: white;
+    border: 1px solid #e2e2e2;
+    font-family: abel;
+}
+
+.alertReport .success{
+    color: greenyellow
+}
+
+.alertReport .danger{
+    color: red
+}
+
+
+
+.alertReport button {
+    background: teal;
+    border: 0px;
+    padding: -11px;
+    margin-bottom: 10px;
+    position: relative;
+    left: -19%;
+    width: 50%;
+}
+
+
+.col-md-8.col-md-offset-2.btnSection {
+    width: 100%;
+}
+
+button.btn.btn-primary.downloadExcell {
+    margin-left: 32px;
+    border: 0px;
+    border-radius: 0px;
+}
+
+button.btn.btn-primary.viewdata {
+    margin-left: -23px;
+    border-radius: 0px;
+    border: 0px;
+    background: #485b6d;
+}
+
+img.img-carosel {
+    width: 144px;
+}
+
+.BioAlert[_ngcontent-c2] a.alert.alert-danger[_ngcontent-c2] {
+    position: absolute;
+    top: -101px;
+    left: 30%;
+    background: #e04e32;
+    color: white;
+    width: 318px;
+    text-align: center;
+    -webkit-animation: bioAlert 1s ease-in-out infinite;
+    animation: bioAlert .9s cubic-bezier(0.01, 1.18, 0, 2.51) 3;
+    transition: all 2s ease;
+}
+
+
+h1.bioMetricTitle {
+    color: #2196F3;
+    text-align: center;
+}
+
+h4.bioMetricDate {
+    text-align: center;
+}
+
+h4.bioMetricID {
+    text-align: center;
+}
+
+.col-md-12.bioData[_ngcontent-c2] {
+    border: 1px solid grey;
+    margin-top: 47px;
+    width: 1152px;
+    overflow: scroll;
+    height: 665px;
+}
+
+
+table.first_aidData.range_data.table-bordered.table-hover.table-stripped.col-md-12 tr {
+    display: table-row-group;
+}
+
+table.first_aidData.range_data.table-bordered.table-hover.table-stripped.col-md-12 th {
+    width: max-content;
+    padding: 10px !important;
+    background: #607D8B;
+    color: white;
+}
+
+table.first_aidData.range_data.table-bordered.table-hover.table-stripped.col-md-12 td {
+    width: 400px !important;
+    background: white;
+    border-bottom: 1px solid grey;
+    min-width: 85px;
+}
+
+

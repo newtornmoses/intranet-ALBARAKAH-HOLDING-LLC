@@ -1,0 +1,53 @@
+p.col-md-6 {
+    margin-left: 45%;
+}
+
+img.signup_img {
+    position: absolute;
+    top: 11px;
+    left: 31px;
+    width: 12%
+}
+
+input.form-control {
+    border-radius: 0px;
+}
+
+
+
+h4.welcome_txt {
+    text-align: center;
+    font-family: abel;
+    font-size: 48px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.42);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.welcome_msg {
+    margin-top: -31px;
+    background: url('../../assets/images/electronicsinformation_1250x450px.jpg');
+    height: 61vh;
+}
+
+
+p.welcome_info.text-center {
+    color: whitesmoke;
+    font-weight: unset;
+    background: hsla(186, 84%, 35%, 0.56);
+    width: fit-content;
+    margin-left: 33%;
+    margin-top: 132px;
+    padding: 2px;
+}
+
+flash-messages {
+    width: 450px !important;
+    position: absolute;
+    left: 40%;
+}
+
+
+.alert-success{
+    background: rgb(54, 167, 54);
+}

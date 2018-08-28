@@ -1,0 +1,308 @@
+
+<div class="information_tech">
+    <div class="row">
+          
+
+        <div class="col-md-4 sidebar">
+            <ul class="list-group">
+                <li class="list-group-item" (click)="showIt_support()"><i class="fa fa-cog"></i> &nbsp;IT SUPPORT</li>
+                <li class="list-group-item" (click)="show_telephone_dir()"><i class="fa fa-phone"></i> &nbsp;TELEPHONE DIRECTORY</li>
+                <li class="list-group-item" (click)="showIt_download()"> <i class="fa fa-download"></i> &nbsp; Download IT FORMS</li>
+                <li class="list-group-item" (click)="showIt_userManage()"><i class="fa fa-users"></i> &nbsp;USER MANAGE</li>
+
+            </ul>
+
+        </div>
+
+        <div class="col-md-12 info_data" *ngIf="startPage">
+            <h4 class="text-center">Welcome to the Information Technology Lab</h4>
+        </div>
+
+
+        <div class="col-md-8 info_support" *ngIf="ItSupport">
+            <h4 class="it_support_header">IT SUPPORT </h4>
+            <img src="./assets/images/customer-service.png" alt="" class="img-it_support">
+
+            <h4 class="it_support">
+                <i class="fa fa-phone"></i> Call us For Help : 1819 or 1820
+            </h4>
+
+
+            
+            <h4 class="it_support">
+                    <i class="fa fa-globe"></i>
+                    Email us For Help : <a class="btn btn-primary" target="_blank" href="mailto:it.helpdesk@albarakah.ae?body=I am having trouble with my internet connection" (click)="loadOutlook()">Email to us Now</a>
+                    <!-- <a href="mailto:one@two.com?body=I am having trouble finding information on ">Mail</a> -->
+                    &nbsp; &nbsp;
+                 
+                    Log a case on ther Service Desk  : <a class="btn btn-success" href="http://helpdesk.albarakah.ae:8080/">Log A case Now</a>
+                     
+            </h4>
+
+
+
+        </div>
+
+
+
+        <div class="col-md-12 info_telephone" *ngIf="telephone_dir">
+            <div class="telephone_img">
+                <img src="./assets/images/telephone256.png" alt="" class="img-responsive img-telephone">
+            </div>
+            <div class="telephone_data_page">
+                <div class="container">
+                    <div class="jumbotron">
+                        <h4 class="text-center phoneDirectory">Advanced Phone Directory Search <i class="fa fa-search custom "></i> </h4>
+                        <hr>
+                        <div class="searchoptions col-md-4">
+                            <a class="btn btn-default" (click)="searchby(false, true)" appActiveButton>Search by extension <i class="fa fa-phone"></i></a>
+                            <a class="btn btn-default" (click)="searchby(true, false)" appActiveButton>Search by user <i class="fa fa-user"></i></a>
+                        </div>
+
+                        <div class="searchform col-md-8">
+                            <form *ngIf="extension">
+                                <input type="number" name="search" placeholder="search by extension number" [(ngModel)]="search" class="form-control " (keyup)="getSearch($event)">
+                                <br>
+                                <p class="text-center">Need to search by user name ? , please click the user button on the left</p>
+
+                                
+                            </form>
+
+                            <form *ngIf="user">
+                                <input type="text" name="search" placeholder="search by extension user" [(ngModel)]="search" class="form-control " (keyup)="get_userSearch($event)">
+                                <br>
+                                <p class="text-center">Need to search by extiension ? , please click the extension button on the left</p>
+                                
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="location_tabs col-md-2">
+                        <h5 style="color:white; font-size:14px;">Navigation</h5>
+                        <h5 class="text-center">TOTAL: {{telephone_Array.length}}</h5>
+                        <div class="tabsArray">
+                            <a class="btn btn-default" (click)="getAll_data()" appActiveButton>ALL DATA</a>
+
+
+
+                            <a class="btn btn-default" (click)="getDepartment('workers village')" appActiveButton>WORKERS VILLAGE</a>
+
+
+                            <a class="btn btn-default" (click)="getDepartment('iccc')" appActiveButton>ICCC</a>
+
+
+
+                            <a class="btn btn-default" (click)="getDepartment('skill force')" appActiveButton>SKILL FORCE</a>
+
+
+
+                            <a class="btn btn-default" (click)="getDepartment('Tasheel')" appActiveButton>TASHEEL</a>
+
+
+                            <a class="btn btn-default" (click)="getDepartment('dic')" appActiveButton>D. I. C DUBAI</a>
+
+                            <a class="btn btn-default" (click)="getDepartment('raha')" appActiveButton>RAHA VILLAGE</a>
+
+                            <a class="btn btn-default" (click)="getDepartment('sav')" appActiveButton>SADIYAAT VILLAGE</a>
+                        </div>
+
+
+                        <div class="footer">
+                            <p>Property of Albarakah Holding </p>
+                            <p> IT DEPARTMENT &copy; 2018</p>
+                            <p>Developed & designed by Newtorn Moses</p>
+                        </div>
+                    </div>
+                    <!-- table -->
+                    <table class="table-hover table-stripped table-bordered col-md-9" width="100%">
+
+                        <tr>
+                            <th>Department <i class="fa fa-building"></i></th>
+                            <th>Extension User <i class="fa fa-user"></i> </th>
+                            <th>Extension No_ <i class="fa fa-phone"></i></th>
+                            <th *ngIf="isSearching">Location <i class="fa fa-globe"></i></th>
+
+
+                        </tr>
+
+                        <tr *ngFor="let item of telephone_Array" appLocationDetails (mouseover)="show_details(item.location)">
+                            <td>{{item.department}}</td>
+                            <td>{{item.extension_user}}</td>
+                            <td>{{item.extension}}</td>
+                            <td *ngIf="isSearching">{{item.location}}</td>
+
+
+
+                        </tr>
+
+
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-8 info_download" *ngIf="downloadForms">
+            <!-- <div class="col-md-12 text">
+            <h4 class="text-center"> IT Downloads</h4>
+          </div> -->
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+            <a href="../../assets/forms/01-User Account Access Form.docx" download>
+
+                    <div class="col-md-4 ">WV-IT</div>
+                    <div class="col-md-4">01-User Account Access Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download" (click)="downloadUserForm()"></i> &nbsp; Download</div>
+                </a>
+                </div>
+   
+            </div>
+
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+          <a href="../../assets/forms/02-E-Mail Account Request Form.docx" download>
+
+                    <div class="col-md-4">WV-IT</div>
+                    <div class="col-md-4">02-E-Mail Account Request Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+               </a>
+                </div>
+            </div>
+
+
+            
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+                <a href="../../assets/forms/03-File Share Folder Request Form.docx" download>
+
+                    <div class="col-md-4">WV-IT</div>
+                    <div class="col-md-4">03-File Share Folder Request Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+                </a>
+                </div>
+            </div>
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+            <a href="../../assets/forms/04-IT Change Request Form.docx" download>
+
+                    <div class="col-md-4">WV-IT</div>
+                    <div class="col-md-4">04-IT Change Request Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+                </a>
+                </div>
+            </div>
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+            <a href="../../assets/forms/05-Telephone and Fax Request Form (1).docx" download>
+
+                    <div class="col-md-4">WV-IT</div>
+                    <div class="col-md-4"> 05-Telephone and Fax Request Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+                </a>
+                </div>
+            </div>
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+            <a href="../../assets/forms/06-Hardware Request Form.docx" download>
+
+                    <div class="col-md-4">WV-IT</div>
+                    <div class="col-md-4">06-Hardware Request Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+              </a> 
+                </div>
+            </div>
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+            <a href="../../assets/forms/07-Internet Access Request Form.docx" download>
+
+                    <div class="col-md-4">WV-IT</div>
+                    <div class="col-md-4">07-Internet Access Request Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+               </a>
+                </div>
+            </div>
+
+            <div class="row downloadSection">
+                <div class="col-md-12">
+            <a href="../../assets/forms/08-Color Printing Access Request Form (1).docx" download>
+
+                    <div class="col-md-4">WV-IT</div>
+                    <div class="col-md-4">08-Color Printing Access Request Form</div>
+                    <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+                </a>
+                </div>
+            </div>
+
+            <div class="row downloadSection">
+                    <div class="col-md-12">
+                        <a href="../../assets/forms/HR - Leave Request Form WV.xlsx" download>
+                          
+                        <div class="col-md-4">WV-IT</div>
+                        <div class="col-md-4">09-HR - Leave Request Form WV </div>
+                        <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+                      
+                        </a>
+                    </div>
+                </div>
+            
+                <div class="row downloadSection">
+                    <div class="col-md-12">
+                        <a href="../../assets/forms/HR - Air Ticket Request WV (1).xlsx" download>
+                           
+                        <div class="col-md-4">WV-IT</div>
+                        <div class="col-md-4">10-HR - Air Ticket Request WV</div>
+                        <div class="col-md-4"> <i class="fa fa-download"></i> &nbsp; Download</div>
+                      
+                        </a>
+                    </div>
+                </div>
+            
+            
+            
+
+
+
+        </div>
+
+        <div class="col-md-6 info_user_manage" *ngIf="userManage">
+            
+            <div class="LOGIN_ADMIN col-md-8">
+            <h4 class="adminSection " style="text-align: center">ADMIN SECTION</h4>
+             <p class="admin_info">This section is only for authorized Administrators only</p>
+        
+                <form action="">
+                    <div class="form-group">
+                        <label for="id">ID</label>
+                    <input type="text" name="" id="" class="col-md-6  form-control" placeholder="admin ID">
+                       
+                    </div>
+
+                    <div class="form-group">
+                            <label for="id">Password</label>
+                        <input type="password" name="" id="" class="col-md-6 form-control" placeholder="admin pass">
+                           
+                        </div>
+
+                       <br>
+                        <div class="form-group">
+                             <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
